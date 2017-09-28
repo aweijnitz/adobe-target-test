@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dynamic Picture Element</title>
+    <style>
+        .description {
+            background-color: aliceblue;
+            margin-left: auto;
+            margin-right: auto;
+            width: 100%;
+            padding-top: 0.2rem;
+            padding-bottom: 1rem;
+            border-bottom: dashed;
+        }
+        p { text-align: center }
+        h1 { text-align: center }
+    </style>
+    <script src="https://afarkas.github.io/lazysizes/lazysizes.min.js"></script>
+</head>
+<body>
+<div class="description">
+    <h1>Responsive <code>picture</code> Element using Lazy Sizes</h1>
+    <p>Everything below this div is a <code>picture</code> element, enhanced with the
+        <a href="https://afarkas.github.io/lazysizes/index.html">lazy sizes JS library</a></p>
+</div>
+<picture>
+    <!--[if IE 9]><video style="display: none"><![endif]-->
+    <source
+            data-srcset="http://via.placeholder.com/500x150"
+            media="(max-width: 500px)" />
+    <source
+            data-srcset="http://via.placeholder.com/1024x150"
+            media="(max-width: 1024px)" />
+    <source
+            data-srcset="http://via.placeholder.com/1200x150" />
+    <!--[if IE 9]></video><![endif]-->
+    <img
+            src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+            data-src="http://via.placeholder.com/1024x256"
+            class="lazyload"
+            alt="FALLBACK IMAGE" />
+</picture>
+</body>
+</html>

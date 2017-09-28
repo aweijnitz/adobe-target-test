@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dynamic Picture Element</title>
+    <style>
+        .description {
+            background-color: aliceblue;
+            margin-left: auto;
+            margin-right: auto;
+            width: 100%;
+            padding-top: 0.2rem;
+            padding-bottom: 1rem;
+            border-bottom: dashed;
+        }
+        p { text-align: center }
+        h1 { text-align: center }
+    </style>
+</head>
+<body>
+<div class="description">
+    <h1>Dynamic <code>picture</code> Element</h1>
+    <p>Everything below this div, is added dynamically using javascript.</p>
+</div>
+<script>
+
+    /** This is what we are dynamically adding to the DOM
+         <picture>
+             <source
+                 media="(min-width: 650px)"
+                 srcset="http://via.placeholder.com/650x150">
+             <source
+                 media="(min-width: 465px)"
+                 srcset="http://via.placeholder.com/465x150">
+             <img
+                 src="http://via.placeholder.com/350x150"
+                 alt="FALLBACK IMG VERSION">
+         </picture>
+     **/
+
+    var container = document.createElement("div");
+    var pictureTag = document.createElement("picture");
+
+    // Create source and add to picture element
+    var pictureTagSource0 = document.createElement("source");
+    var attMedia0 = document.createAttribute("media");
+    attMedia0.value = "(min-width: 650px)";
+    var attSrcSet0 = document.createAttribute("srcset");
+    attSrcSet0.value = "http://via.placeholder.com/650x150";
+    pictureTagSource0.setAttributeNode(attMedia0);
+    pictureTagSource0.setAttributeNode(attSrcSet0);
+    pictureTag.appendChild(pictureTagSource0);
+
+    // Create source and add to picture element
+    var pictureTagSource1 = document.createElement("source");
+    var attMedia1 = document.createAttribute("media");
+    attMedia1.value = "(min-width: 465px)";
+    var attSrcSet1 = document.createAttribute("srcset");
+    attSrcSet1.value = "http://via.placeholder.com/465x150";
+    pictureTagSource1.setAttributeNode(attMedia1);
+    pictureTagSource1.setAttributeNode(attSrcSet1);
+    pictureTag.appendChild(pictureTagSource1);
+
+    // Create source and add to picture element
+    var pictureTagFallback = document.createElement("img");
+    var imgSrc = document.createAttribute("src");
+    imgSrc.value = "http://via.placeholder.com/350x150";
+    var imgAlt = document.createAttribute("alt");
+    imgAlt.value = "FALLBACK IMG VERSION";
+    pictureTagFallback.setAttributeNode(imgSrc);
+    pictureTagFallback.setAttributeNode(imgAlt);
+    pictureTag.appendChild(pictureTagFallback);
+
+    container.appendChild(pictureTag);
+
+    document.getElementsByTagName('body')[0].appendChild(container);
+
+
+</script>
+</body>
+</html>
+
